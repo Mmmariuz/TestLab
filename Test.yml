@@ -11,7 +11,7 @@ steps:
     displayName: 'Set Python Version'
 
   - script: |
-    ls -la
+      ls -la
     displayName: 'List files'
 
   - script: |
