@@ -22,6 +22,6 @@ steps:
   - task: AzureWebApp@1
     inputs:
       azureSubscription: 'MyAzureConnection'
-      appName: 'NAVNET_PÅ_WEBAPP'
+      appName: 'testlab-mariusapp'
       package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy to Azure'
