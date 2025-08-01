@@ -21,7 +21,7 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: 'github.com_Mmmariuz'
+      azureSubscription: 'MyAzureConnection'
       appName: 'NAVNET_PÅ_WEBAPP'
       package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy to Azure'
