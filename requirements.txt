@@ -1,6 +1,3 @@
-# testing
-coverage>=7.2
-pytest==8.1.1
-# dev tooling
-black              # automatisk formatering
-flake8             # linting / stilkontroll
+flask
+pytest
+
