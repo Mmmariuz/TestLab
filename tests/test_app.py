@@ -1,8 +1,14 @@
 import unittest
+from app import app
 
-class SimpleTest(unittest.TestCase):
-    def test_basic_math(self):
-        self.assertEqual(2 + 2, 4)
+class APITestCase(unittest.TestCase):
+    def setUp(self):
+        self.client = app.test_client()
 
-if __name__ == '__main__':
+    def test_fact_endpoint(self):
+        response = self.client.get("/fact")
+        self.assertEqual(response.status_code, 200)
+        self.assertIn("fact", response.get_json())
+
+if __name__ == "__main__":
     unittest.main()
