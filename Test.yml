@@ -44,3 +44,10 @@ steps:
       appName: 'testlab-mariusapp'
       package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy to Azure'
+    
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'MyContainerRegistryConnection'
+      repository: 'testlab-mariusapp'
+      command: 'buildAndPush'
+      Dockerfile: '**/Dockerfile'
