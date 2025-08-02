@@ -27,6 +27,15 @@ steps:
       python -m unittest discover tests
     displayName: 'Run tests'
 
+  - script: |
+      coverage run -m pytest
+      coverage report
+    displayName: 'Run tests with coverage'
+
+  - script: |
+      pytest -v tests
+    displayName: 'Run tests with pytest'
+
   # Deploy Flask-app til Azure Web App
   - task: AzureWebApp@1
     inputs:
