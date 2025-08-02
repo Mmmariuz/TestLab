@@ -42,5 +42,5 @@ steps:
     inputs:
       azureSubscription: 'MyAzureConnection'
       appName: 'testlab-mariusapp'
-      workingDirectory: '$(System.DefaultWorkingDirectory)'
+      package: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy to Azure'
