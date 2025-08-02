@@ -1,28 +1,33 @@
 trigger:
   - main  # Endre om du bruker annen branch
-
+  
 pool:
   name: 'Default'
 
 steps:
+  # Sett opp Python-versjon
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.x'
     displayName: 'Set Python Version'
 
+  # List filer for debugging
   - script: |
       dir
     displayName: 'List files'
 
+  # Installer avhengigheter
   - script: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
     displayName: 'Install dependencies'
 
+  # Kjør tester
   - script: |
       python -m unittest discover tests
     displayName: 'Run tests'
 
+  # Deploy Flask-app til Azure Web App
   - task: AzureWebApp@1
     inputs:
       azureSubscription: 'MyAzureConnection'
