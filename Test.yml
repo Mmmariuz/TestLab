@@ -36,6 +36,19 @@ steps:
       pytest -v tests
     displayName: 'Run tests with pytest'
 
+  - script: |
+      coverage run -m pytest
+      coverage html
+    displayName: 'Run tests and generate HTML coverage'
+
+  # Laste ned rapporten direkte fra Azure DevOps-panelet
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'htmlcov'
+      artifactName: 'coverage-report'
+      publishLocation: 'Container'
+    displayName: 'Publish HTML Coverage Report'
+  
   # Deploy Flask-app til Azure Web App
   - task: AzureWebApp@1
     inputs:
