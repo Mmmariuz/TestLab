@@ -24,20 +24,8 @@ steps:
 
   # Kjør tester
   - script: |
-      python -m unittest discover tests
-    displayName: 'Run tests'
-
-  - script: |
-      coverage run -m pytest
+      coverage run -m pytest -v
       coverage report
-    displayName: 'Run tests with coverage'
-
-  - script: |
-      pytest -v tests
-    displayName: 'Run tests with pytest'
-
-  - script: |
-      coverage run -m pytest
       coverage html
     displayName: 'Run tests and generate HTML coverage'
 
@@ -54,5 +42,5 @@ steps:
     inputs:
       azureSubscription: 'MyAzureConnection'
       appName: 'testlab-mariusapp'
-      package: '$(System.DefaultWorkingDirectory)'
+      workingDirectory: '$(System.DefaultWorkingDirectory)'
     displayName: 'Deploy to Azure'
