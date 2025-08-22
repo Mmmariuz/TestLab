@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Eksponer porten Flask bruker
-EXPOSE 5000
+EXPOSE 80
 
 # Start appen
 CMD ["python", "app.py"]
