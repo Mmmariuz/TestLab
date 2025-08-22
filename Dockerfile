@@ -1,18 +1,13 @@
-# Bruk offisiell Python image
-FROM python:3.11-slim
-
-# Sett arbeidsmappe
+FROM python:3.10-slim
 WORKDIR /app
 
-# Kopier nødvendige filer
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Kopier resten av prosjektet
 COPY . .
 
-# Eksponer porten Flask bruker
 EXPOSE 80
 
-# Start appen
+ENV PORT=80
+
 CMD ["python", "app.py"]
