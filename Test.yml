@@ -4,9 +4,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-pool:
-  name: 'Default'
-
 steps:
   # Sett opp Python-versjon
   - task: UsePythonVersion@0
