@@ -48,7 +48,7 @@ steps:
   - task: Docker@2
     inputs:
       containerRegistry: 'MyContainerRegistryConnection'
-      repository: 'testlab-mariusapp'
+      repository: 'mariusacr2.azurecr.io/testlab-mariusapp'
       command: 'buildAndPush'
       Dockerfile: '**/Dockerfile'
       tags: |
