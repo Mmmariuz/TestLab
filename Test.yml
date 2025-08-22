@@ -54,7 +54,7 @@ steps:
       tags: |
         $(Build.BuildId)
 
- -  task: AzureWebAppContainer@1
+  - task: AzureWebAppContainer@1
     inputs:
       azureSubscription: 'MyAzureConnection'
       appName: 'testlab-mariusapp'
