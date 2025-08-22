@@ -1,50 +1,37 @@
 trigger:
-  - main  # Endre om du bruker annen branch
-  
+  - main
+
 pool:
   name: 'Default'
 
 steps:
-  # Sett opp Python-versjon
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '3.x'
     displayName: 'Set Python Version'
 
-  # List filer for debugging
   - script: |
       dir
     displayName: 'List files'
 
-  # Installer avhengigheter
   - script: |
       python -m pip install --upgrade pip
       pip install -r requirements.txt
     displayName: 'Install dependencies'
 
-  # Kjør tester
   - script: |
       coverage run -m pytest -v
       coverage report
       coverage html
     displayName: 'Run tests and generate HTML coverage'
 
-  # Laste ned rapporten direkte fra Azure DevOps-panelet
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: 'htmlcov'
       artifactName: 'coverage-report'
       publishLocation: 'Container'
     displayName: 'Publish HTML Coverage Report'
-  
-  # Deploy Flask-app til Azure Web App
-  - task: AzureWebApp@1
-    inputs:
-      azureSubscription: 'MyAzureConnection'
-      appName: 'testlab-mariusapp'
-      package: '$(System.DefaultWorkingDirectory)'
-    displayName: 'Deploy to Azure'
-    
+
   - task: Docker@2
     inputs:
       containerRegistry: 'MyDockerRegistryConnection'
@@ -53,6 +40,7 @@ steps:
       Dockerfile: '**/Dockerfile'
       tags: |
         $(Build.BuildId)
+    displayName: 'Build and Push Docker Image'
 
   - task: AzureWebAppContainer@1
     inputs:
@@ -60,3 +48,4 @@ steps:
       appName: 'testlab-mariusapp'
       imageName: 'mariusacr2.azurecr.io/testlab-mariusapp:$(Build.BuildId)'
       containerRegistry: 'MyDockerRegistryConnection'
+    displayName: 'Deploy Container to Web App'
