@@ -46,6 +46,6 @@ steps:
     inputs:
       azureSubscription: 'MyAzureConnection'
       appName: 'testlab-mariusapp'
-      imageName: 'mariusacr2.azurecr.io/testlab-mariusapp:$(Build.BuildId)'
+      imageName: 'mariusacr2.azurecr.io/testlab-mariusapp:manualtest'
       containerRegistry: 'MyDockerRegistryConnection'
     displayName: 'Deploy Container to Web App'
