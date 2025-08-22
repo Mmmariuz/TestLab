@@ -2,6 +2,9 @@ trigger:
   - main  # Endre om du bruker annen branch
   
 pool:
+  vmImage: 'ubuntu-latest'
+
+pool:
   name: 'Default'
 
 steps:
