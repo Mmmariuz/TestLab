@@ -2,7 +2,7 @@ trigger:
   - main  # Endre om du bruker annen branch
   
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'Default'
 
 steps:
   # Sett opp Python-versjon
