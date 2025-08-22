@@ -54,10 +54,9 @@ steps:
       tags: |
         $(Build.BuildId)
 
-  - task: AzureWebAppContainer@1
+ -  task: AzureWebAppContainer@1
     inputs:
       azureSubscription: 'MyAzureConnection'
       appName: 'testlab-mariusapp'
-      imageName: 'testlab-mariusapp:$(Build.BuildId)'
-      containerRegistry: 'MyContainerRegistryConnection'
-
+      imageName: 'mariusacr2.azurecr.io/testlab-mariusapp:$(Build.BuildId)'
+      containerRegistry: 'MyDockerRegistryConnection'
